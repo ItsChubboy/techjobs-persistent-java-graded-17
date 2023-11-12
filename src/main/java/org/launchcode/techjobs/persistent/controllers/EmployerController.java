@@ -17,7 +17,7 @@ public class EmployerController {
     @Autowired
     private EmployerRepository employerRepository;
 
-    @GetMapping("index")
+    @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("employers", employerRepository.findAll());
         return "employers/index";
@@ -35,7 +35,7 @@ public class EmployerController {
         if (errors.hasErrors()) {
             return "employers/add";
         } else {
-//            employerRepository.save(newEmployer);
+            employerRepository.save(newEmployer);
             return "redirect:";
         }
     }
